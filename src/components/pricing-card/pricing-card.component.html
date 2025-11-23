@@ -1,0 +1,53 @@
+<div 
+  class="relative rounded-2xl p-8 flex flex-col h-full transition-all duration-300 transform hover:-translate-y-2 group bg-white/70 backdrop-blur-md shadow-xl shadow-slate-900/10"
+  [class.border-2]="plan().recommended"
+  [class.border-transparent]="plan().recommended"
+  [class.bg-amber-50/50]="plan().recommended"
+  [class.border]="!plan().recommended"
+  [class.border-slate-200]="!plan().recommended"
+  [class.hover:border-amber-300]="!plan().recommended"
+  >
+  
+  @if(plan().recommended) {
+    <!-- Gradient Border -->
+    <div class="absolute -inset-px bg-gradient-to-r from-amber-500 to-yellow-500 rounded-2xl"></div>
+    <!-- Badge -->
+    <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2">
+        <span class="bg-gradient-to-r from-amber-500 to-yellow-500 text-white text-sm font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md">সেরা পছন্দ</span>
+    </div>
+  }
+
+  <div class="relative z-10 flex flex-col h-full">
+    <h3 class="text-2xl font-bold text-slate-900 text-center">{{ plan().title }}</h3>
+    <p class="text-4xl font-extrabold text-slate-900 text-center my-6">{{ plan().price }}</p>
+
+    <div class="space-y-3 text-slate-600 flex-grow">
+      @for(feature of plan().features; track $index) {
+        <div class="flex items-start">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-600 mr-3 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.052-.143z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-base">{{ feature }}</span>
+        </div>
+      }
+    </div>
+    
+    <div class="mt-8 space-y-3">
+       @if(plan().recommended) {
+        <button class="w-full font-bold py-3 px-6 rounded-lg transition-all duration-300 ease-in-out hover:scale-105 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-yellow-500 hover:to-amber-500 text-white shadow-lg shadow-amber-500/40">
+          এই প্ল্যানটি বেছে নিন
+        </button>
+       } @else {
+         <button class="w-full font-bold py-3 px-6 rounded-lg transition-all duration-300 ease-in-out hover:scale-105 border-2 border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white">
+          এই প্ল্যানটি বেছে নিন
+        </button>
+       }
+
+      @if(plan().demoUrl) {
+        <a [href]="plan().demoUrl" target="_blank" class="block text-center w-full font-bold py-3 px-6 rounded-lg transition-all duration-300 ease-in-out hover:scale-105 bg-transparent hover:bg-slate-100 text-slate-700">
+          ডেমো দেখুন
+        </a>
+      }
+    </div>
+  </div>
+</div>

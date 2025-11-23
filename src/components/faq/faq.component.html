@@ -1,0 +1,35 @@
+<section class="py-20">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-5xl font-bold text-slate-900">সাধারণ জিজ্ঞাসা</h2>
+      <p class="text-lg text-slate-600 mt-4">
+        আপনার মনে থাকা কিছু সাধারণ প্রশ্নের উত্তর এখানে খুঁজে নিন। আরও কিছু জানার থাকলে আমাদের সাথে যোগাযোগ করতে দ্বিধা করবেন না।
+      </p>
+    </div>
+    <div class="max-w-4xl mx-auto">
+      <div class="space-y-4">
+        @for(faq of faqs(); track $index) {
+          <div class="bg-white/70 backdrop-blur-lg border border-slate-200 rounded-lg overflow-hidden shadow-sm">
+            <button (click)="toggleFaq($index)" class="w-full flex justify-between items-center text-left p-6 focus:outline-none group">
+              <span class="text-xl font-medium text-slate-900 group-hover:text-orange-600 transition-colors">{{ faq.question }}</span>
+              <span class="transform transition-transform duration-300" [class]="faq.open ? 'rotate-180' : ''">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </button>
+            <div 
+              class="grid transition-all duration-500 ease-in-out"
+              [style.grid-template-rows]="faq.open ? '1fr' : '0fr'">
+              <div class="overflow-hidden">
+                 <div class="px-6 pb-6 text-slate-600 text-lg leading-relaxed border-t border-slate-200 pt-4">
+                  {{ faq.answer }}
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

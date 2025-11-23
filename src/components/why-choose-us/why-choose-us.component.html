@@ -1,0 +1,22 @@
+<section class="py-20 bg-white">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-5xl font-bold text-slate-900">কেন আমাদের বেছে নেবেন?</h2>
+      <p class="text-lg text-slate-600 mt-4">
+        আমরা শুধু একটি ডিজিটাল মার্কেটিং এজেন্সি নই, আমরা আপনার ব্যবসার বিশ্বস্ত পার্টNER। আমাদের অভিজ্ঞতা, দক্ষতা এবং ডেটা-নির্ভর পদ্ধতি আপনার সাফল্য নিশ্চিত করে।
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      @for (feature of features; track $index) {
+        <div class="relative group">
+          <div class="absolute -inset-0.5 bg-gradient-to-r from-orange-600 to-amber-600 rounded-lg blur opacity-0 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+          <div class="relative bg-slate-50/60 backdrop-blur-md p-8 rounded-xl border border-slate-200/80 flex flex-col items-center justify-start space-y-4 h-full shadow-lg shadow-slate-900/5">
+            <div class="bg-white p-4 rounded-full border border-slate-200" [innerHTML]="feature.icon"></div>
+            <h3 class="text-2xl font-bold text-slate-900 pt-2">{{ feature.title }}</h3>
+            <p class="text-lg text-slate-600">{{ feature.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

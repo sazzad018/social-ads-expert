@@ -1,0 +1,90 @@
+<div class="min-h-screen bg-slate-50 text-slate-800 relative isolate overflow-x-hidden">
+  <!-- Aurora background effect -->
+  <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+    <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#fb923c] to-[#f59e0b] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+  </div>
+  <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
+    <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#fca5a5] to-[#fbbf24] opacity-20 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+  </div>
+
+  <app-header></app-header>
+  <main>
+    <app-hero></app-hero>
+    <app-why-choose-us></app-why-choose-us>
+    <app-stats></app-stats>
+    <app-process></app-process>
+
+    <!-- Services Container -->
+    <section id="services" class="space-y-16 py-16">
+      <!-- Facebook Marketing Service -->
+      <div>
+        <div class="text-center mb-4">
+          <span class="inline-block bg-gradient-to-r from-orange-100 to-amber-100 text-orange-800 text-sm font-semibold px-4 py-2 rounded-full border border-orange-200 shadow-sm">
+            ফেসবুক মার্কেটিং এ ১০০% SELL গ্যারান্টি
+          </span>
+        </div>
+        <app-service-section 
+          id="facebook-marketing"
+          [layoutType]="'facebook'"
+          title="শুধু বুস্ট বা ADS না, ফুল ফানেল ফেসবুক মার্কেটিং সল্যুশন"
+          subtitle="আমরা আপনার প্রোডাক্ট, বাজেট আর টার্গেট কাস্টমার বুঝে ডে-বাই-ডে প্ল্যান করি— দৈনিক বাজেট, ক্যাম্পেইনের ধরন (মেসেঞ্জার/ল্যান্ডিং পেজ) থেকে শুরু করে অ্যাডের সময়কাল পর্যন্ত সবকিছুই আমরা সেটআপ করি।"
+          videoUrl="https://www.youtube.com/embed/s5t8G3_z_6g"
+          videoCaption="ভিডিও: দেখুন কিভাবে সঠিক স্ট্র্যাটেজি আপনার ব্যবসাকে বদলে দেয়"
+          videoSide="right"
+          [theme]="'cyan'"
+          [tabs]="[
+            'ডলার রেট ১৪৫৳ থেকে',
+            'বাজেট ও প্রফিট প্ল্যানিং',
+            'সঠিক ক্যাম্পেইন নির্বাচন'
+          ]"
+          [points]="[
+            'ব্যবসা-ভিত্তিক মার্কেটিং স্ট্র্যাটেজি: আপনার প্রোডাক্ট এবং কাস্টমার অনুযায়ী পার্সোনালাইজড স্ট্র্যাটেজি।',
+            'স্বচ্ছ টাইমলাইন ও বাজেট: কবে, কী করা হবে এবং কত খরচ হবে, তার পরিষ্কার ধারণা।',
+            'ফোকাস থাকবে ইনবক্স, কনফার্মড অর্ডার এবং রিপিট কাস্টমারের উপর।'
+          ]"
+          specialNote="বিশেষ দ্রষ্টব্য: আমরা বিনামূল্যে আপনার ফেসবুক পেজ এবং পূর্বের বিজ্ঞাপন অডিট করে দেই।">
+        </app-service-section>
+      </div>
+
+      <!-- Website Development Service & Pricing -->
+      <div>
+        <div class="text-center mb-4">
+          <span class="inline-block bg-gradient-to-r from-violet-100 to-fuchsia-100 text-violet-800 text-sm font-semibold px-4 py-2 rounded-full border border-violet-200 shadow-sm">
+            ওয়েবসাইট প্লাস SELL গ্যারান্টি দুইটাই পাবেন
+          </span>
+        </div>
+        <app-service-section
+          id="website-dev"
+          iconType="website"
+          title="সুপারফাস্ট ওয়েবসাইট, ১০০% সেল–গ্যারান্টি"
+          subtitle="আমরা এমন ওয়েবসাইট বানাই যা শুধু ভালো দেখতে না, বরং স্পিড, ইউজার এক্সপেরিয়েন্স আর কনভার্শন – তিনটাই ব্যালেন্স করে। ফলাফল: ফাস্ট লোডিং ওয়েবসাইট + ১০০% সেল–ফোকাসড লেআউট, ব্যবহার করা সহজ এবং যা দিয়ে সহজেই বিক্রি বাড়ানো যায়।"
+          videoUrl="https://www.youtube.com/embed/Y-6C0D_u_To"
+          videoSide="right"
+          [showPricingButton]="false"
+          [theme]="'violet'"
+          [points]="[
+            'ব্র্যান্ড আইডেন্টিটি ডিজাইন: আপনার ব্র্যান্ডের দর্শন এবং রঙের সাথে মিল রেখে আমরা একটি ইউনিক এবং প্রফেশনাল ডিজাইন তৈরি করি।',
+            'দ্রুতগতি এবং সুরক্ষিত: আমাদের তৈরি করা ওয়েবসাইটগুলো দ্রুত লোড হয় এবং সর্বোচ্চ নিরাপত্তা নিশ্চিত করে, যা গ্রাহকদের আস্থা অর্জন করে।',
+            'সেলস-ফোকাসড ফিচার: ফেক অর্ডার ফিল্টারিং, সার্ভার-সাইড ট্র্যাকিং এবং পেমেন্ট গেটওয়ে ইন্টিগ্রেশনের মতো ফিচারগুলো আপনার বিক্রয় প্রক্রিয়াকে সহজ করে।',
+            '১০০% রেসপন্সিভ: আপনার ওয়েবসাইটটি মোবাইল, ট্যাবলেট এবং ডেস্কটপ—সব ডিভাইসেই নিখুঁতভাবে প্রদর্শিত হবে।'
+          ]">
+        </app-service-section>
+        <app-pricing-section></app-pricing-section>
+      </div>
+   
+      <!-- Ready Business Setup Service -->
+      <app-ready-business-section></app-ready-business-section>
+    </section>
+    
+    <app-case-studies></app-case-studies>
+    <app-testimonials></app-testimonials>
+    <app-clients></app-clients>
+    <app-ceo-introduction></app-ceo-introduction>
+    <app-faq></app-faq>
+    <app-cta></app-cta>
+
+  </main>
+  <app-footer></app-footer>
+  <app-popup-modal></app-popup-modal>
+  <app-income-planner-modal></app-income-planner-modal>
+</div>

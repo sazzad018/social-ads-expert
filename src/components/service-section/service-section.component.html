@@ -1,0 +1,144 @@
+<section [id]="id()" class="py-12">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      
+      <!-- Video Column -->
+      <div 
+        [class]="videoSide() === 'left' ? 'md:order-1' : 'md:order-2'">
+        <div 
+          class="relative p-1 rounded-2xl bg-gradient-to-br to-transparent"
+          [class.from-orange-500/30]="theme() === 'cyan'"
+          [class.via-amber-500/30]="theme() === 'cyan'"
+          [class.from-amber-500/30]="theme() === 'violet'"
+          [class.via-yellow-500/30]="theme() === 'violet'">
+          <iframe 
+            class="relative w-full aspect-video rounded-xl shadow-2xl shadow-slate-900/10" 
+            [src]="safeVideoUrl()" 
+            [title]="'YouTube video player for ' + title()" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        @if(videoCaption()) {
+          <p class="text-center text-slate-500 mt-4 text-sm">{{ videoCaption() }}</p>
+        }
+      </div>
+
+      <!-- Text Content Column -->
+      <div 
+        class="relative"
+        [class]="videoSide() === 'left' ? 'md:order-2' : 'md:order-1'">
+        
+        @if(layoutType() === 'facebook') {
+            <!-- NEW FACEBOOK LAYOUT -->
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900">{{ title() }}</h2>
+            <p class="text-lg text-slate-600 my-6">{{ subtitle() }}</p>
+
+            <div class="bg-orange-50/50 border border-orange-200/80 rounded-xl shadow-lg shadow-orange-900/5 flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-orange-200/80">
+              @for (tab of tabs() || []; track $index; let first = $first) {
+                <div class="flex items-center gap-3 p-4 flex-1">
+                  @if (first) {
+                    <div class="w-1 h-8 bg-orange-400 rounded-full"></div>
+                  }
+                  <span class="font-semibold text-slate-700">{{ tab }}</span>
+                </div>
+              }
+            </div>
+
+             <ul class="space-y-4 mt-8">
+              @for (point of points(); track $index) {
+                <li class="flex items-start">
+                  <span class="rounded-full h-6 w-6 flex items-center justify-center mr-4 flex-shrink-0 mt-1"
+                    [class.bg-orange-100]="theme() === 'cyan'"
+                    [class.text-orange-600]="theme() === 'cyan'">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                  </span>
+                  @if (point.includes(':')) {
+                    <span class="text-slate-600 text-lg">
+                      <strong class="text-slate-700">{{ point.split(':')[0] }}:</strong>{{ point.split(':').slice(1).join(':') }}
+                    </span>
+                  } @else {
+                     <span class="text-slate-600 text-lg">{{ point }}</span>
+                  }
+                </li>
+              }
+            </ul>
+
+            @if(specialNote()) {
+                <div class="mt-8 p-4 rounded-lg border-l-4 border-orange-400 bg-orange-50/70">
+                    <p class="text-slate-600">
+                      @if (specialNote()?.includes(':')) {
+                        <strong class="text-slate-800">{{ specialNote()?.split(':')[0] }}:</strong>{{ specialNote()?.split(':').slice(1).join(':') }}
+                      } @else {
+                        {{ specialNote() }}
+                      }
+                    </p>
+                </div>
+            }
+
+        } @else {
+            <!-- EXISTING DEFAULT LAYOUT -->
+            <div class="flex items-center gap-4 mb-4">
+               <div class="p-3 bg-slate-100 rounded-full border border-slate-200">
+                 @switch (iconType()) {
+                  @case ('facebook') {
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" [class]="theme() === 'cyan' ? 'text-orange-500' : 'text-amber-500'" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/></svg>
+                  }
+                  @case ('website') {
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" [class]="theme() === 'cyan' ? 'text-orange-500' : 'text-amber-500'" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A11.953 11.953 0 0112 13.5c-2.998 0-5.74-1.1-7.843-2.918m0 0A8.959 8.959 0 003 12c0-.778.099-1.533.284-2.253m18.132 4.506A9 9 0 0112 21.75c-2.676 0-5.058-.99-6.93-2.625" /></svg>
+                  }
+                  @case ('business') {
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.05a2.25 2.25 0 01-2.25 2.25h-12a2.25 2.25 0 01-2.25-2.25v-4.05m16.5 0a2.25 2.25 0 00-2.25-2.25h-12a2.25 2.25 0 00-2.25 2.25m16.5 0v-4.05a2.25 2.25 0 00-2.25-2.25h-12a2.25 2.25 0 00-2.25 2.25v4.05m0 0a2.25 2.25 0 00-2.25 2.25h16.5a2.25 2.25 0 00-2.25-2.25m0 0H3.75" /></svg>
+                  }
+                }
+              </div>
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-900">{{ title() }}</h2>
+            </div>
+
+            <p class="text-lg text-slate-600 mb-8">{{ subtitle() }}</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              @for (point of points(); track $index) {
+                @let parts = point.split(':');
+                @let title = parts[0];
+                @let description = parts.slice(1).join(':').trim();
+                <div class="bg-white/60 backdrop-blur-md p-6 rounded-xl border border-slate-200/80 shadow-lg shadow-slate-900/5 hover:shadow-xl hover:shadow-slate-900/10 transition-all duration-300 transform hover:-translate-y-1">
+                  <div class="flex items-start">
+                    <span class="flex-shrink-0 rounded-full h-8 w-8 flex items-center justify-center mr-4 mt-1"
+                      [class.bg-amber-100]="theme() === 'violet'"
+                      [class.text-amber-600]="theme() === 'violet'"
+                      [class.bg-orange-100]="theme() === 'cyan'"
+                      [class.text-orange-600]="theme() === 'cyan'">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                    <div>
+                      <h4 class="font-bold text-slate-800 text-lg">{{ title }}</h4>
+                      <p class="text-slate-600 mt-1">{{ description }}</p>
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
+
+            @if (showPricingButton()) {
+              <div class="mt-8">
+                <button (click)="onSeePricingClick()" 
+                  class="text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 ease-in-out hover:scale-105 bg-gradient-to-r"
+                  [class]="theme() === 'cyan' 
+                    ? 'from-orange-500 to-amber-500 hover:from-amber-500 hover:to-orange-500 shadow-lg shadow-orange-500/50 hover:shadow-xl hover:shadow-orange-500/70' 
+                    : 'from-amber-500 to-yellow-500 hover:from-yellow-500 hover:to-amber-500 shadow-lg shadow-amber-500/50 hover:shadow-xl hover:shadow-amber-500/70'">
+                  প্রাইস দেখতে ক্লিক করুন
+                </button>
+              </div>
+            }
+        }
+      </div>
+    </div>
+  </div>
+</section>

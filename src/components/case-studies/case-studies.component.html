@@ -1,0 +1,36 @@
+<section id="case-studies" class="py-20 bg-slate-50">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-5xl font-bold text-slate-900">আমাদের সফলতার গল্প</h2>
+      <p class="text-lg text-slate-600 mt-4">
+        আমরা কথায় নয়, কাজে বিশ্বাসী। দেখুন কীভাবে আমরা আমাদের ক্লায়েন্টদের ব্যবসাকে নতুন উচ্চতায় নিয়ে গেছি।
+      </p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      @for(study of caseStudies; track study.client) {
+        <div class="bg-white/70 backdrop-blur-lg p-8 rounded-xl border border-slate-200 flex flex-col h-full transform transition-all duration-300 hover:-translate-y-2 hover:border-orange-400/50 hover:shadow-2xl hover:shadow-slate-900/10">
+          <div class="flex-shrink-0 mb-6">
+             <p class="text-xl font-bold text-slate-900">{{ study.client }}</p>
+          </div>
+          <div class="flex-grow">
+            <h3 class="text-lg font-semibold text-orange-600">সমস্যা ছিল</h3>
+            <p class="text-slate-600 mt-2 mb-6 text-base">{{ study.challenge }}</p>
+            <h3 class="text-lg font-semibold text-orange-600">সমাধান করা হয়েছে</h3>
+            <p class="text-slate-600 mt-2 text-base">{{ study.solution }}</p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-slate-200">
+            <h3 class="text-lg font-semibold text-slate-800 mb-4">ফলাফল</h3>
+            <div class="grid grid-cols-3 gap-4 text-center">
+              @for(result of study.results; track result.label) {
+                <div>
+                  <p class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500">{{ result.metric }}</p>
+                  <p class="text-sm text-slate-500">{{ result.label }}</p>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

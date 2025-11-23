@@ -1,0 +1,40 @@
+@if (isOpen()) {
+  <div 
+    (click)="close()" 
+    class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center transition-opacity duration-300 ease-in-out"
+    [class.opacity-100]="isOpen()"
+    [class.opacity-0]="!isOpen()">
+    
+    <div 
+      (click)="$event.stopPropagation()"
+      class="relative bg-white w-full max-w-lg m-6 p-8 rounded-2xl shadow-2xl text-center transform transition-all duration-300 ease-in-out"
+      [class.scale-100]="isOpen()"
+      [class.opacity-100]="isOpen()"
+      [class.scale-95]="!isOpen()"
+      [class.opacity-0]="!isOpen()">
+
+      <button (click)="close()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-orange-100 to-amber-100 mb-6">
+         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-orange-600">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+          </svg>
+      </div>
+
+      <h2 class="text-3xl font-bold text-slate-900 leading-tight">
+        মার্কেটিং সার্ভিসে থাকছে <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-500">১০০% সেল গ্যারান্টি</span>
+      </h2>
+      <p class="text-slate-600 mt-3 mb-8">
+        যদি আমাদের শর্ত অনুযায়ী কাজ করেন
+      </p>
+
+      <button (click)="scrollTo('services')" class="w-full bg-gradient-to-r from-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-500 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 ease-in-out hover:scale-105 text-lg shadow-lg shadow-orange-500/40">
+        সার্ভিস দেখুন
+      </button>
+    </div>
+  </div>
+}
