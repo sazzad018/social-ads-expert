@@ -1,10 +1,12 @@
 
+
 import { Component, ChangeDetectionStrategy, input, inject, computed, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-service-section',
+  standalone: true,
   templateUrl: './service-section.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule]

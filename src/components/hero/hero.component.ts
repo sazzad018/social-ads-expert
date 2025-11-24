@@ -1,9 +1,11 @@
+
 import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-hero',
+  standalone: true,
   templateUrl: './hero.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, ReactiveFormsModule]

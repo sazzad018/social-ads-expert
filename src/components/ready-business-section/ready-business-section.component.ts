@@ -1,13 +1,14 @@
+
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-ready-business-section',
+  standalone: true,
   templateUrl: './ready-business-section.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule],
-  standalone: true,
 })
 export class ReadyBusinessSectionComponent {
   private sanitizer = inject(DomSanitizer);

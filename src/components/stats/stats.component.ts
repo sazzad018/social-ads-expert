@@ -4,10 +4,10 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-stats',
+  standalone: true,
   templateUrl: './stats.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule],
-  standalone: true,
 })
 export class StatsComponent {
   stats = [

@@ -1,9 +1,11 @@
 
+
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-case-studies',
+  standalone: true,
   templateUrl: './case-studies.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule],

@@ -4,10 +4,10 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-testimonials',
+  standalone: true,
   templateUrl: './testimonials.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule],
-  standalone: true,
 })
 export class TestimonialsComponent {
   testimonials = [

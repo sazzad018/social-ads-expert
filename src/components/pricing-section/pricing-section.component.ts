@@ -1,9 +1,11 @@
+
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { PricingCardComponent } from '../pricing-card/pricing-card.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pricing-section',
+  standalone: true,
   templateUrl: './pricing-section.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, PricingCardComponent]

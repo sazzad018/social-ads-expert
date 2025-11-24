@@ -21,6 +21,7 @@ import { CeoIntroductionComponent } from './components/ceo-introduction/ceo-intr
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [

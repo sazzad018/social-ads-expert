@@ -1,9 +1,11 @@
 
+
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-why-choose-us',
+  standalone: true,
   templateUrl: './why-choose-us.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule]
